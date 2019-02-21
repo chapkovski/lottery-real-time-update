@@ -5,6 +5,7 @@ from os import environ
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
+EXTENSION_APPS = ['lot']
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1.00,
     'participation_fee': 0.00,
@@ -12,14 +13,13 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    #{
-    #    'name': 'public_goods',
-    #    'display_name': "Public Goods",
-    #    'num_demo_participants': 3,
-    #    'app_sequence': ['public_goods', 'payment_info'],
-    #},
+    {
+       'name': 'lot',
+       'display_name': "Lotter",
+       'num_demo_participants': 3,
+       'app_sequence': ['lot'],
+    },
 ]
-
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans

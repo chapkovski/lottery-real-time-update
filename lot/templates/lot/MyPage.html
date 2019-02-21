@@ -1,0 +1,12 @@
+{% extends "global/Page.html" %}
+{% load otree lottery %}
+
+{% block title %}
+    Lottery
+{% endblock %}
+
+{% block content %}
+    <div id="container">{% lottery_listener %}</div>
+    {% next_button %}
+
+{% endblock %}

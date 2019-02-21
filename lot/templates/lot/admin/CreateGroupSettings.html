@@ -1,0 +1,17 @@
+{% extends "otree/BaseAdmin.html" %}
+{% load otree %}
+{% block title %}
+    Create new parameters for a group
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="">
+        {{ form }}
+        {% csrf_token %}
+        <div class="my-3">
+            <button class="btn btn-primary">Create</button>
+            <a class="btn btn-secondary" role="button" href="{% url 'speed_group_settings' %}">Cancel</a>
+        </div>
+
+    </form>
+{% endblock %}
