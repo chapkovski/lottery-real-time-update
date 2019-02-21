@@ -2,13 +2,19 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
-
+from django.db import models as djmodels
+from otree.models import Session
+from utils import cp
 
 author = 'Your name here'
 
 doc = """
 Your app description
 """
+
+
+def get_channel_name(session: Session) -> str:
+    return f'session_{session.code}'
 
 
 class Constants(BaseConstants):
@@ -18,7 +24,7 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    lottery_result = models.IntegerField()
 
 
 class Group(BaseGroup):
@@ -27,3 +33,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     pass
+
+
+class Lottery(djmodels.Model):
+    input = models.IntegerField()
+    session = djmodels.OneToOneField(to=Session, related_name='lottery')

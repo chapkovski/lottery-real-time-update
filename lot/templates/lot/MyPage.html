@@ -6,7 +6,12 @@
 {% endblock %}
 
 {% block content %}
-    <div id="container">{% lottery_listener %}</div>
+
+     {% lottery_listener %}
+
     {% next_button %}
+
+{% endblock %}
+{% block scripts %}
 
 {% endblock %}

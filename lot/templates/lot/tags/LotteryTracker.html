@@ -1,0 +1,20 @@
+{% load  otree %}
+<div class="alert alert-info">
+    <h5 class="lottery_result">{{ subsession.lottery_result|default_if_none:'No results yet!' }}</h5>
+</div>
+<script>
+    $(function () {
+        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+        var ws_path = ws_scheme + '://' + window.location.host + "/lottery_channel/{{ player.pk }}";
+        var socket = new ReconnectingWebSocket(ws_path);
+        socket.onopen = function (event) {
+            console.log('connected to oTree');
+        };
+        socket.onmessage = function (event) {
+            var obj = jQuery.parseJSON(event.data);
+            $('.lottery_result').html(obj.lottery_result);
+        };
+    })
+    ;
+</script>
+

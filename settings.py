@@ -15,7 +15,7 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
        'name': 'lot',
-       'display_name': "Lotter",
+       'display_name': "Lottery",
        'num_demo_participants': 3,
        'app_sequence': ['lot'],
     },

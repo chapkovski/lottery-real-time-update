@@ -1,26 +1,13 @@
 from django import template
-from django.conf import settings
+from django.template import TemplateSyntaxError, Context
 
 register = template.Library()
 
 
-def valute(value):
-    currency = settings.POINTS_CUSTOM_NAME
-    return '{:,} {}'.format(value, currency)
+# two following random strings are needed to prevent usage of tracking_time and tracking_focus twice
+# see more here: https://stackoverflow.com/questions/51786795/check-that-tag-is-used-in-template-only-once/
 
 
-@register.filter(name='perc')
-def perc(value, arg):
-    return valute(int(value * (1 + arg)))
-
-
-@register.filter(name='p')
-def strperc(value):
-    return str('{}%'.format('{:,}'.format(int(value * 100))))
-
-
-@register.inclusion_tag('claire/tags/comprehension_example.html', takes_context=True)
-def comprehension_info(context, investment, size):
-    context.update({'investment_info': investment.get_comprehension_info(size),
-                    'size': size})
+@register.inclusion_tag('lot/tags/LotteryTracker.html', takes_context=True, name='lottery_listener')
+def tracking_lotteries(context, *args, **kwargs):
     return context
