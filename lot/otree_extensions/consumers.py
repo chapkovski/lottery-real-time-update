@@ -18,19 +18,20 @@ class LotteryTracker(JsonWebsocketConsumer):
     def get_player(self):
         self.clean_kwargs()
         return Player.objects.get(pk=self.player_pk)
-
-    def receive(self, content, **kwargs):
-        raw_content = json.loads(content)
-        # just some sanity check
-        result = raw_content['result']
-        cp('RESULT!!', result)
-
-    def connect(self, message, **kwargs):
-        # just some sanity check
-        p = self.get_player()
-        cp(p.subsession.lottery_result, '::: RESULT!?')
-        print('Connected to lottery tracker...')
-
-    def disconnect(self, message, **kwargs):
-        # just some sanity check
-        print('client disconnected from lottery tracker...')
+    # PH: none of this is needed, maybe helpful for development to switch em on if something does not fucntion to
+    # trace an error.
+    # def receive(self, content, **kwargs):
+    #     raw_content = json.loads(content)
+    #     # just some sanity check
+    #     result = raw_content['result']
+    #     cp('RESULT!!', result)
+    #
+    # def connect(self, message, **kwargs):
+    #     # just some sanity check
+    #     p = self.get_player()
+    #     cp(p.subsession.lottery_result, '::: RESULT!?')
+    #     print('Connected to lottery tracker...')
+    #
+    # def disconnect(self, message, **kwargs):
+    #     # just some sanity check
+    #     print('client disconnected from lottery tracker...')

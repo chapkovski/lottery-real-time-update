@@ -36,5 +36,8 @@ class Player(BasePlayer):
 
 
 class Lottery(djmodels.Model):
+    """
+    Linking lottery results and specific session.
+    """
     input = models.IntegerField()
     session = djmodels.OneToOneField(to=Session, related_name='lottery')

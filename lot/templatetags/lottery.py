@@ -1,3 +1,6 @@
+"""
+Just a wrapper tag so lottery info can be included anywhere.
+"""
 from django import template
 from django.template import TemplateSyntaxError, Context
 
