@@ -1,8 +1,5 @@
-import json
 from channels.generic.websockets import JsonWebsocketConsumer
-from otree.models import Participant
 from lot.models import Player, get_channel_name
-from utils import cp
 
 
 class LotteryTracker(JsonWebsocketConsumer):

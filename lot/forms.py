@@ -1,8 +1,6 @@
 from django import forms
 from .models import Lottery
 from otree.models import Session
-from utils import cp
-
 from django.forms import ModelChoiceField
 
 
